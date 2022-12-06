@@ -1,1 +1,1 @@
-CHECK OUT THE WIKI PAGE
+Check the wiki page!
