@@ -7,7 +7,7 @@ body {
     align-items: center;
     background-color:orange;
     overflow: hidden;
-    background-image: url('../assets/grass.jpg');
+    background-image: url('./assets/grass.jpg');
     background-repeat: no-repeat;
     background-size: contain;
     
