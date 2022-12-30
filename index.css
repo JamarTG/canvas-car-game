@@ -1,0 +1,57 @@
+body {
+    font-size: 11pt;
+    margin: 0;
+    padding:0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color:orange;
+    overflow: hidden;
+    background-image: url('../assets/grass.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    
+}
+
+canvas{
+    padding: 0;
+    margin: -10px;
+    width: 400px;
+    height: 650px;
+    
+    /* border-image: url('./assets/rail.png') 10 round; */
+}
+
+.regular{
+    border: 5px solid transparent;
+}
+
+button{
+    margin-top: 10px;
+    background-color: black;
+    width: 4rem;
+    padding: 1em;
+    color: aliceblue;
+    font-variant: small-caps;
+}
+
+.gamestart {
+    width: 30vw;
+    background-image :url('../assets/chevy.jpg');
+	background-position: -130px;
+	background-repeat : "no-repeat";
+}
+
+.gameend {
+    border: 5px solid #D3D3D3;
+}
+
+.hide{
+    display: none;
+}
+
+
+.red{
+    border: 5px solid red;
+}
+
