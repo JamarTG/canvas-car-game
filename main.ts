@@ -178,7 +178,6 @@ const masterGameLoop = () => {
     userCar.increaseScore();
   }
   if (userCar.isOnEdge() || userCar.hasCollidedWithObstacleCar(obstacleCar)) {
-    
     userCar.decreaseLives();
     userCar.respawn(obstacleCar);
 
@@ -186,6 +185,14 @@ const masterGameLoop = () => {
       isGameOver = true;
       requestAnimationFrame(gameOverAnimation);
       return;
+    }
+    else{
+      canvas.classList.add('crash');
+      setTimeout(() => {
+          canvas.classList.remove('crash')
+        } , 
+        500
+      );
     }
   }
 
@@ -232,6 +239,7 @@ const gameStartAnimation = () => {
 };
 
 const startGame = () => {
+
   gameStartAnimation();
 
   addEventListener("keydown", (event) => {
@@ -254,14 +262,16 @@ const startGame = () => {
 };
 
 const clock = () => {
+  
   let startTime = Date.now();
   let elapsed = 0;
+
   setInterval(() => {
     elapsed = Date.now() - startTime;
     formattedTime = new Date(elapsed).toISOString().substr(14, 7);
   }, 1);
+
 };
 
 clock();
-
 startGame();
