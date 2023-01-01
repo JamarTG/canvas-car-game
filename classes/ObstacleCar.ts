@@ -26,7 +26,7 @@ export default class ObstacleCar {
   };
 
   increaseSpeed = () => {
-    this.speed += 0.005;
+    this.speed += 0.001;
   };
 
   generateRandomCarPosition = () => {

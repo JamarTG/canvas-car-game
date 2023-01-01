@@ -118,11 +118,7 @@ export default class Viper {
     return this;
   };
 
-  increaseTurningSpeed = () => {
-    this.turningSpeed +=-0.01
-  }
   changeCarDirection = (direction: string) => {
-
     switch (direction) {
       case "left":
         this.moveToLeft();

@@ -19,25 +19,36 @@ export default class Road {
         
         this.xCoordinate = startingXCoordinate;
         this.yCoordinate = startingYCoordinate;
-
         
         
     }
 
-    getImage = () => this.image;
+    getImage = () => {
+        return this.image;
+    }
 
-    getXCoordinate = () => this.xCoordinate;
-    getYCoordinate = () => this.yCoordinate;
+    getXCoordinate = () => {    
+        return this.xCoordinate;
+    }
 
-    setYCoordinate = (yCoordinateValue : number) => this.yCoordinate = yCoordinateValue;
-    setXCoordinate = (xCoordinateValue : number) => this.xCoordinate = xCoordinateValue
-    
+    getYCoordinate = () => {
+        return this.yCoordinate;
 
-    resetYCoordinate = (isFrontRoad:boolean) =>  this.yCoordinate = isFrontRoad ? 0 : canvas.height  * -1;
+    }
+
+    resetYCoordinate = (isFrontRoad:boolean) => {
+        if(isFrontRoad){
+            this.yCoordinate = 0;
+        }
+        else{
+            this.yCoordinate = canvas.height * -1;
+        }
         
+    }
 
-    updateYCoordinate = () => this.yCoordinate += Road.speed;
-    
+    updateYCoordinate = () => {
+        this.yCoordinate += Road.speed;
+    }
 
     newRoad = () => {
 
@@ -49,7 +60,7 @@ export default class Road {
     }
 
     static increaseSpeed = () => {
-        Road.speed += 0.01;
+        Road.speed += 0.001;
     }
 
    
