@@ -6,10 +6,18 @@ module.exports = {
     new CopyWebpack({
       patterns: [
         {
-          from : './*.html'
+          from : '*.html'
         },
         {
-          from : './*.css'
+          from : '*.css'
+        },
+        {
+          from : 'assets',
+          to : 'assets'
+        },
+        {
+          from : 'classes',
+          to : 'classes'
         }
       ],
 
