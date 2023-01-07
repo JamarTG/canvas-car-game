@@ -7,20 +7,16 @@ export default class ObstacleCar {
         this.getYCoordinate = () => {
             return this.yCoordinate;
         };
-        this.getSpeed = () => {
-            return this.speed;
-        };
-        this.increaseSpeed = () => {
-            this.speed += 0.001;
-        };
+        this.getSpeed = () => this.speed;
+        this.increaseSpeed = () => this.speed += 0.001;
         this.generateRandomCarPosition = () => {
             this.yCoordinate = -400;
-            this.xCoordinate = Math.ceil(Math.random() * 420);
+            this.xCoordinate = Math.ceil(Math.random() * 420) + 10;
         };
         this.move = () => {
             this.yCoordinate += this.speed;
         };
-        this.xCoordinate = Math.ceil(Math.random() * canvas.width) - 50;
+        this.xCoordinate = Math.ceil(Math.random() * canvas.width) - 5;
         this.yCoordinate = -400;
         this.speed = 3;
     }

@@ -5,22 +5,24 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color:rgb(26, 25, 25);
+    background-color:rgb(113, 224, 80);
     overflow: hidden;
- 
     background-repeat: no-repeat;
     background-size: contain;
     
 }
+.body{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
 canvas{
     padding: 0;
-    margin-top: 10px;
     width: 300px;
     height: 550px;
     border: 2px solid rgb(28, 194, 28);
-    border-radius: 10px solid red;
-   
+    border-radius: 10px
 }
 
 button{
@@ -40,16 +42,11 @@ button{
 }
 
 .gameend {
-    border: 5px solid #D3D3D3;
+    border: 2px solid #D3D3D3;
 }
 
 .hide{
     display: none;
-}
-
-
-.red{
-    border: 5px solid red;
 }
 
 
@@ -74,33 +71,14 @@ button{
     90% { transform: translate(1px, 2px) rotate(0deg); }
     100% { transform: translate(1px, -2px) rotate(-1deg); }
   }
-body {
-    font-size: 11pt;
-    margin: 0;
-    padding:0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color:orange;
-    overflow: hidden;
-    background-image: url('../assets/grass.jpg');
-    background-repeat: no-repeat;
-    background-size: contain;
-    
-}
+
 
 canvas{
-    padding: 0;
-    margin: -10px;
-    width: 400px;
-    height: 650px;
-    
-    /* border-image: url('./assets/rail.png') 10 round; */
+    margin: 10px;
+    width: 500px;
+    height: 600px;
 }
 
-.regular{
-    border: 5px solid transparent;
-}
 
 button{
     margin-top: 10px;
@@ -119,24 +97,19 @@ button{
 }
 
 .gameend {
-    border: 5px solid #D3D3D3;
+    border: 2px solid #D3D3D3;
 }
 
 .hide{
     display: none;
 }
 
-
 .red{
-    border: 5px solid red;
+    border: 2px solid red;
 }
 
-
 .crash {
-    /* Start the shake animation and make the animation last for 0.5 seconds */
     animation: crash 0.5s;
-  
-    /* When the animation is finished, start again */
     animation-iteration-count: infinite;
   }
   
