@@ -5,12 +5,11 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color:rgb(26, 25, 25);
+    background-color:rgb(32, 132, 179);
     overflow: hidden;
  
     background-repeat: no-repeat;
-    background-size: contain;
-    
+    background-size: contain;   
 }
 
 canvas{
@@ -20,7 +19,6 @@ canvas{
     height: 550px;
     border: 2px solid rgb(28, 194, 28);
     border-radius: 10px solid red;
-   
 }
 
 button{
@@ -74,20 +72,6 @@ button{
     90% { transform: translate(1px, 2px) rotate(0deg); }
     100% { transform: translate(1px, -2px) rotate(-1deg); }
   }
-body {
-    font-size: 11pt;
-    margin: 0;
-    padding:0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color:orange;
-    overflow: hidden;
-    background-image: url('../assets/grass.jpg');
-    background-repeat: no-repeat;
-    background-size: contain;
-    
-}
 
 canvas{
     padding: 0;
