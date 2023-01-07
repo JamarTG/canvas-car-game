@@ -38,7 +38,7 @@ export default class Viper {
   };
 
   isOnEdge = () =>
-    this.xCoordinate <= 0 || this.xCoordinate >= canvas.width - Viper.WIDTH;
+    this.xCoordinate <= -40 || this.xCoordinate >= canvas.width - Viper.WIDTH/2;
 
   hasCollidedWithObstacleCar = (obstacleCar: ObstacleCar) => {
     return (

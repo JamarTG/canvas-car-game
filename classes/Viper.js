@@ -8,7 +8,7 @@ export default class Viper {
             newImage.src = "https://i.postimg.cc/8P96st7v/post-53-1139607373.jpg";
             return newImage;
         };
-        this.isOnEdge = () => this.xCoordinate <= 0 || this.xCoordinate >= canvas.width - Viper.WIDTH;
+        this.isOnEdge = () => this.xCoordinate <= -40 || this.xCoordinate >= canvas.width - Viper.WIDTH / 2;
         this.hasCollidedWithObstacleCar = (obstacleCar) => {
             return (Math.abs(this.xCoordinate - obstacleCar.getXCoordinate()) <= 45 &&
                 Math.abs(obstacleCar.getYCoordinate() - this.yCoordinate) <= 90);
