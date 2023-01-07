@@ -110,6 +110,7 @@ const masterGameLoop = () => {
     }
     if (userCar.isOnEdge() || userCar.hasCollidedWithObstacleCar(obstacleCar)) {
         canvas.classList.add('crash');
+        userCar.setMovementDirection('up');
         setTimeout(() => {
             canvas.classList.remove('crash');
         }, 500);
