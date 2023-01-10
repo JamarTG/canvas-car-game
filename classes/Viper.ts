@@ -16,7 +16,7 @@ export default class Viper {
   static INITIAL_X = canvas.width / 2;
   static INITIAL_Y = 580;
   static INITIAL_SCORE = 0;
-  static INITAL_LIVES = 0;
+  static INITAL_LIVES = 3;
   static INITIAL_MOVEMENT_DIRECTION = "";
   static INITIAL_TURNING_SPEED = 4;
   static VIPER_IMG_SOURCES = "https://i.postimg.cc/8P96st7v/post-53-1139607373.jpg";
