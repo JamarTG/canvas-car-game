@@ -6,7 +6,6 @@ const canvasElement = document.getElementById("canvas") as HTMLCanvasElement;
 export default class Viper {
   private xCoordinate: number;
   private yCoordinate: number;
-
   private score: number;
   private turningSpeed: number;
   private movementDirection: string;
@@ -16,35 +15,52 @@ export default class Viper {
   static HEIGHT = 100;
   static INITIAL_X = canvas.width / 2;
   static INITIAL_Y = 580;
+  static INITIAL_SCORE = 0;
+  static INITAL_LIVES = 0;
+  static INITIAL_MOVEMENT_DIRECTION = "";
+  static INITIAL_TURNING_SPEED = 4;
+  static VIPER_IMG_SOURCES = "https://i.postimg.cc/8P96st7v/post-53-1139607373.jpg";
+  static NEW_IMAGE_ELEMENT = document.createElement("img");
+  static X_COORDINATE_MINUS_CAR_WIDTH = -40;
+  static MIN_DIFF_BETW_XCOORD_FROM_LEFT = 42;
+  static MIN_DIFF_BETW_XCOORD_FROM_RIGHT = 30;
 
   constructor() {
-    this.lives = 3;
-
+    this.lives = Viper.INITAL_LIVES;
     this.xCoordinate = Viper.INITIAL_X;
     this.yCoordinate = Viper.INITIAL_Y;
-
-    this.score = 0;
-
-    this.turningSpeed = 4;
-    this.movementDirection = "";
+    this.score = Viper.INITIAL_SCORE;
+    this.turningSpeed = Viper.INITIAL_TURNING_SPEED;
+    this.movementDirection = Viper.INITIAL_MOVEMENT_DIRECTION;
   }
 
   createImage = () => {
-    let newImage = document.createElement("img");
-
-    newImage.src = "https://i.postimg.cc/8P96st7v/post-53-1139607373.jpg";
-
+    let newImage = Viper.NEW_IMAGE_ELEMENT;
+    newImage.src = Viper.VIPER_IMG_SOURCES;
     return newImage;
   };
 
-  isOnEdge = () =>
-    this.xCoordinate <= -40 || this.xCoordinate >= canvas.width - Viper.WIDTH/2;
+  isOnEdge = () => {
+    const hasCollidedWithLeftEdge = this.xCoordinate <= Viper.X_COORDINATE_MINUS_CAR_WIDTH ;
+    const hasCollidedWithRightEdge = this.xCoordinate >= canvas.width - Viper.WIDTH/2;
+    
+    return hasCollidedWithLeftEdge || hasCollidedWithRightEdge;
+  }
 
   hasCollidedWithObstacleCar = (obstacleCar: ObstacleCar) => {
-    return (
-      Math.abs(this.xCoordinate - obstacleCar.getXCoordinate()) <= 45 &&
-      Math.abs(obstacleCar.getYCoordinate() - this.yCoordinate) <= 90
-    );
+    let isUserCarLeftofObstacleCar = this.getXCoordinate() < obstacleCar.getXCoordinate();
+    
+
+    let isXCoordinatesIntersecting = isUserCarLeftofObstacleCar 
+    ? Math.abs(
+      this.xCoordinate - obstacleCar.getXCoordinate()) <= Viper.MIN_DIFF_BETW_XCOORD_FROM_LEFT
+    : Math.abs(
+      this.xCoordinate - obstacleCar.getXCoordinate()) <= Viper.MIN_DIFF_BETW_XCOORD_FROM_RIGHT 
+
+
+    let isYCoordinatesIntersecting = Math.abs(obstacleCar.getYCoordinate() - this.yCoordinate) <= 90;
+   
+    return isXCoordinatesIntersecting && isYCoordinatesIntersecting;
   };
 
   getLives = () => {
@@ -57,20 +73,10 @@ export default class Viper {
     return string;
   };
 
-  getXCoordinate = () => {
-    return this.xCoordinate;
-  };
-  getYCoordinate = () => {
-    return this.yCoordinate;
-  };
-
-  getScore = () => {
-    return this.score;
-  };
-
-  getMovementDirection = () => {
-    return this.movementDirection;
-  };
+  getXCoordinate = () => this.xCoordinate;
+  getYCoordinate = () => this.yCoordinate;
+  getScore = () => this.score;
+  getMovementDirection = () => this.movementDirection;
 
   respawn = (obstacleCar: ObstacleCar) => {
 
@@ -83,7 +89,6 @@ export default class Viper {
 
     if (obstacleCar.getXCoordinate() >= canvas.width / 2) {
       this.xCoordinate = 20;
-
       this.changeCarDirection("up");
     } else {
       this.xCoordinate = 300;
@@ -126,11 +131,10 @@ export default class Viper {
       case "right":
         this.moveToRight();
         break;
-    case "neutral":
+      case "neutral":
         this.goNeutral();
         break;
-      default:   
-        
+      default:          
         break;
     }
   };
