@@ -12,9 +12,10 @@ body {
     justify-content: space-evenly;
     align-items: center;
     overflow: hidden;
-    background-image: url('assets/images/bg.jpg');
+    background-image: url('./assets/bg.jpg');
     background-repeat: no-repeat;
     background-size: cover;   
+
 }
 
 .press-title{
