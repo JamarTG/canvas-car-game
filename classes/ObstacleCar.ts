@@ -10,7 +10,7 @@ export default class ObstacleCar {
   constructor() {
     this.xCoordinate = Math.ceil(Math.random() * canvas.width) - 50;
     this.yCoordinate = -400;
-    this.speed = 3;
+    this.speed = 5;
   }
 
   getXCoordinate = () => {
@@ -26,7 +26,7 @@ export default class ObstacleCar {
   };
 
   increaseSpeed = () => {
-    this.speed += 0.001;
+    this.speed += 0.005;
   };
 
   generateRandomCarPosition = () => {

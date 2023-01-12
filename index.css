@@ -12,12 +12,12 @@ body {
 }
 
 canvas{
+    border: 2px solid black;
     padding: 0;
     margin-top: 10px;
     min-width: 450px;
-    max-width: 450px;
-    border: none;
-    border-radius: 10px solid red;
+    max-width: 450px;  
+    border-radius: 10px;
 }
 
 button{

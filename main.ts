@@ -174,6 +174,7 @@ const masterGameLoop = () => {
     obstacleCar.generateRandomCarPosition();
     Road.increaseSpeed();
     userCar.increaseScore();
+    userCar.increaseSideSpeed();
   }
   if (userCar.isOnEdge() || userCar.hasCollidedWithObstacleCar(obstacleCar)) {
     

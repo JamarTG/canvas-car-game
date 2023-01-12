@@ -38,5 +38,5 @@ export default class Road {
         return newImage; 
     }
 
-    static increaseSpeed = () => Road.speed += 0.001;  
+    static increaseSpeed = () => Road.speed += 0.005;  
 }
