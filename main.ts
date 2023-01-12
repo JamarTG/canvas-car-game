@@ -3,13 +3,8 @@ import Road from "./classes/Road.js";
 import ObstacleCar from "./classes/ObstacleCar.js";
 import cartype from "./assets/CarType.js";
 import canvas from "./classes/Canvas.js";
-import isPhone from "./utilityFuncs/isPhone.js";
 
 const canvasContext = canvas.getContext("2d")!;
-
-const neutralButton = document.getElementById("center") as HTMLButtonElement;
-const leftButton = document.getElementById("left") as HTMLButtonElement;
-const rightButton = document.getElementById("right") as HTMLButtonElement;
 
 let userCar = new Viper();
 let obstacleCar = new ObstacleCar();
@@ -71,7 +66,7 @@ const drawInfo = () => {
   canvasContext.font = '10px "Press Start 2P", sans-serif';
   canvasContext.fillText(`pts : ${userCar.getScore()}`, 40, 60);
   canvasContext.fillText(
-    `spd : ${(obstacleCar.getSpeed() * 5).toFixed(1)} km/hr`,
+    `spd : ${(obstacleCar.getSpeed()).toFixed(1)} km/hr`,
     40,
     80
   );
@@ -103,8 +98,6 @@ const roadAnimation = () => {
 };
 
 const gameControls = (keyboardEvent: KeyboardEvent) => {
-  keyboardEvent = keyboardEvent || window.event;
-
   switch (keyboardEvent.key) {
     case "ArrowUp":
       userCar.setMovementDirection("neutral").changeCarDirection(userCar.getMovementDirection());
@@ -117,6 +110,11 @@ const gameControls = (keyboardEvent: KeyboardEvent) => {
       break;
     case "ArrowRight":
       userCar.setMovementDirection("right").changeCarDirection(userCar.getMovementDirection());
+      console.log('Another test')
+      break;
+    case " ":
+      console.log('Space was pressed')
+      userCar.setFlyState()
       break;
     default:
       break;
@@ -156,8 +154,8 @@ const drawCar = () => {
       carImg,
       userCar.getXCoordinate(),
       userCar.getYCoordinate(),
-      Viper.WIDTH,
-      Viper.HEIGHT
+      userCar.getWidth(),
+      userCar.getHeight()
     );
   };
 };
@@ -166,6 +164,7 @@ const masterGameLoop = () => {
   drawCar();
   drawInfo();
   generateCar();
+  userCar.updateFlyState()
 
   obstacleCar.increaseSpeed();
   Road.increaseSpeed();
@@ -174,14 +173,12 @@ const masterGameLoop = () => {
     obstacleCar.generateRandomCarPosition();
     Road.increaseSpeed();
     userCar.increaseScore();
-    userCar.increaseSideSpeed();
   }
   if (userCar.isOnEdge() || userCar.hasCollidedWithObstacleCar(obstacleCar)) {
-    
     canvas.classList.add('crash');
-	userCar.setMovementDirection('up');
+	  userCar.setMovementDirection('up');
     setTimeout(()=> {
-      canvas.classList.remove('crash')
+      canvas.classList.remove('crash');
     },500)
 
     userCar.decreaseLives();
@@ -195,23 +192,13 @@ const masterGameLoop = () => {
   }
 
   document.onkeydown = gameControls;
-
   userCar.changeCarDirection(userCar.getMovementDirection());
-
   MASTERLOOP_ANIMATION_ID = requestAnimationFrame(masterGameLoop);
 };
 
 const gameStartAnimation = () => {
   canvas.classList.add("gamestart");
-
-  if (!isPhone()) {
-    neutralButton.classList.add("hide");
-    rightButton.classList.add("hide");
-    leftButton.classList.add("hide");
-  }
-
   canvasContext.clearRect(0, 0, 500, 700);
-
   canvasContext.fillStyle = "orange";
   canvasContext.font = '60px "Press Start 2P", sans-serif';
   canvasContext.fillText("Evasive", canvas.width / 10, canvas.height / 6 + 30);
@@ -232,7 +219,7 @@ const gameStartAnimation = () => {
   );
 
   canvas.classList.add("gamestart");
-
+  
   GAME_START_ANIMATION_ID = requestAnimationFrame(gameStartAnimation);
 };
 
