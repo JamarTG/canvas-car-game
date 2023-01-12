@@ -5,19 +5,18 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color:rgb(32, 132, 179);
     overflow: hidden;
- 
+    background-image: url('assets/bg.jpg');
     background-repeat: no-repeat;
-    background-size: contain;   
+    background-size: cover;   
 }
 
 canvas{
     padding: 0;
     margin-top: 10px;
-    width: 300px;
-    height: 550px;
-    border: 2px solid rgb(28, 194, 28);
+    min-width: 450px;
+    max-width: 450px;
+    border: none;
     border-radius: 10px solid red;
 }
 
@@ -44,7 +43,6 @@ button{
 .hide{
     display: none;
 }
-
 
 .red{
     border: 5px solid red;
