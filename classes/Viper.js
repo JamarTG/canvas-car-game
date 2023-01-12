@@ -3,11 +3,6 @@ import ObstacleCar from "./ObstacleCar.js";
 const canvasElement = document.getElementById("canvas");
 export default class Viper {
     constructor() {
-        this.createImage = () => {
-            let newImage = Viper.NEW_IMAGE_ELEMENT;
-            newImage.src = Viper.VIPER_IMG_SOURCES;
-            return newImage;
-        };
         this.isOnEdge = () => {
             const hasCollidedWithLeftEdge = this.xCoordinate <= Viper.X_COORDINATE_MINUS_CAR_WIDTH;
             const hasCollidedWithRightEdge = this.xCoordinate >= canvas.width - Viper.WIDTH / 2;
@@ -20,6 +15,9 @@ export default class Viper {
                 : Math.abs(this.xCoordinate - obstacleCar.getXCoordinate()) <= Viper.MIN_DIFF_BETW_XCOORD_FROM_RIGHT;
             let isYCoordinatesIntersecting = Math.abs(obstacleCar.getYCoordinate() - this.yCoordinate) <= 90;
             return isXCoordinatesIntersecting && isYCoordinatesIntersecting;
+        };
+        this.increaseSideSpeed = () => {
+            this.turningSpeed += 0.01;
         };
         this.getLives = () => {
             let string = "";
@@ -93,7 +91,7 @@ export default class Viper {
 Viper.WIDTH = 120;
 Viper.HEIGHT = 100;
 Viper.INITIAL_X = canvas.width / 2;
-Viper.INITIAL_Y = 580;
+Viper.INITIAL_Y = canvas.height - 100;
 Viper.INITIAL_SCORE = 0;
 Viper.INITAL_LIVES = 3;
 Viper.INITIAL_MOVEMENT_DIRECTION = "";

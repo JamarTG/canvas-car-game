@@ -14,7 +14,7 @@ export default class Viper {
   static WIDTH = 120;
   static HEIGHT = 100;
   static INITIAL_X = canvas.width / 2;
-  static INITIAL_Y = 580;
+  static INITIAL_Y = canvas.height - 100;
   static INITIAL_SCORE = 0;
   static INITAL_LIVES = 3;
   static INITIAL_MOVEMENT_DIRECTION = "";
@@ -33,12 +33,6 @@ export default class Viper {
     this.turningSpeed = Viper.INITIAL_TURNING_SPEED;
     this.movementDirection = Viper.INITIAL_MOVEMENT_DIRECTION;
   }
-
-  createImage = () => {
-    let newImage = Viper.NEW_IMAGE_ELEMENT;
-    newImage.src = Viper.VIPER_IMG_SOURCES;
-    return newImage;
-  };
 
   isOnEdge = () => {
     const hasCollidedWithLeftEdge = this.xCoordinate <= Viper.X_COORDINATE_MINUS_CAR_WIDTH ;
@@ -62,6 +56,10 @@ export default class Viper {
    
     return isXCoordinatesIntersecting && isYCoordinatesIntersecting;
   };
+
+  increaseSideSpeed = () => {
+    this.turningSpeed += 0.01
+  }
 
   getLives = () => {
     let string = "";

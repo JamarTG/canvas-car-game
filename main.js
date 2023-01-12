@@ -78,7 +78,7 @@ const gameControls = (keyboardEvent) => {
 const generateCar = () => {
     let newImage = document.createElement("img");
     if (!(obstacleCar.getYCoordinate() >= -100 &&
-        obstacleCar.getYCoordinate() <= Road.bottomYCoordinate)) {
+        obstacleCar.getYCoordinate() <= Road.BOTTOM_Y_COORDINATE)) {
         ObstacleCar.src = `${cartype[Math.floor(Math.random() * cartype.length)]}`;
         newImage.src = ObstacleCar.src;
     }
@@ -103,10 +103,11 @@ const masterGameLoop = () => {
     generateCar();
     obstacleCar.increaseSpeed();
     Road.increaseSpeed();
-    if (obstacleCar.getYCoordinate() >= Road.bottomYCoordinate) {
+    if (obstacleCar.getYCoordinate() >= Road.BOTTOM_Y_COORDINATE) {
         obstacleCar.generateRandomCarPosition();
         Road.increaseSpeed();
         userCar.increaseScore();
+        userCar.increaseSideSpeed();
     }
     if (userCar.isOnEdge() || userCar.hasCollidedWithObstacleCar(obstacleCar)) {
         canvas.classList.add('crash');
