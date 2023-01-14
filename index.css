@@ -1,15 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,300;0,400;0,500;0,600;1,200;1,300;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
+
 body {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
     font-size: 11pt;
     margin: 0;
     padding:0;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-evenly;
     align-items: center;
     overflow: hidden;
     background-image: url('./assets/bg.jpg');
     background-repeat: no-repeat;
     background-size: cover;   
+
 }
+
+.press-title{
+    font-family: "Press Start 2P";
+}
+
+.source{
+    padding: 10px;
+    border: none;
+    border-radius: 4px;   
+    background-color: orange;
+    color: #d3d1d1;
+}
+
+.source:hover{
+    color:white;
+}
+
+.btn {
+  position:relative;
+  padding:4px;
+  margin: 10px;
+  width:fit-content;
+  height:40px;
+  border:3px solid #494949;
+  outline:none;
+  background-color:#f4f5f6;
+  border-radius: 4px;
+  font-weight: 500;
+  box-shadow:  2px 2px 2px #202020;
+  color: rgb(12, 12, 12);
+  font-family: "Press Start 2P";
+}
+
 
 canvas{
     border: 2px solid black;
@@ -20,14 +60,7 @@ canvas{
     border-radius: 10px;
 }
 
-button{
-    margin-top: 10px;
-    background-color: black;
-    width: 4rem;
-    padding: 1em;
-    color: aliceblue;
-    font-variant: small-caps;
-}
+
 
 .gamestart {
     width: 30vw;
@@ -78,14 +111,6 @@ canvas{
     border: 5px solid transparent;
 }
 
-button{
-    margin-top: 10px;
-    background-color: black;
-    width: 4rem;
-    padding: 1em;
-    color: aliceblue;
-    font-variant: small-caps;
-}
 
 .gamestart {
     width: 30vw;

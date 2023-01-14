@@ -58,6 +58,9 @@ export default class Viper {
                 ? Math.abs(this.xCoordinate - obstacleCar.getXCoordinate()) <= Viper.MIN_DIFF_BETW_XCOORD_FROM_LEFT
                 : Math.abs(this.xCoordinate - obstacleCar.getXCoordinate()) <= Viper.MIN_DIFF_BETW_XCOORD_FROM_RIGHT;
             let isYCoordinatesIntersecting = Math.abs(obstacleCar.getYCoordinate() - this.yCoordinate) <= 90;
+            if (this.isFlying || this.isFalling) {
+                return false;
+            }
             return isXCoordinatesIntersecting && isYCoordinatesIntersecting;
         };
         this.increaseSideSpeed = () => {

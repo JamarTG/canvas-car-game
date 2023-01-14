@@ -122,7 +122,14 @@ export default class Viper {
 
     let isYCoordinatesIntersecting = Math.abs(obstacleCar.getYCoordinate() - this.yCoordinate) <= 90;
 
+
+    if(this.isFlying || this.isFalling){
+      return false
+    }
+
     return isXCoordinatesIntersecting && isYCoordinatesIntersecting;
+    
+    
   };
 
   increaseSideSpeed = () => {
