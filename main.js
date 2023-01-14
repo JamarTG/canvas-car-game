@@ -67,10 +67,6 @@ const gameControls = (keyboardEvent) => {
             userCar.setMovementDirection("right").changeCarDirection(userCar.getMovementDirection());
             console.log('Another test');
             break;
-        case " ":
-            console.log('Space was pressed');
-            userCar.setFlyState();
-            break;
         default:
             break;
     }
@@ -96,12 +92,12 @@ const drawCar = () => {
         roadAnimation();
         canvasContext.drawImage(carImg, userCar.getXCoordinate(), userCar.getYCoordinate(), userCar.getWidth(), userCar.getHeight());
     };
+    console.log(carImg);
 };
 const masterGameLoop = () => {
-    drawCar();
-    drawInfo();
     generateCar();
-    userCar.updateFlyState();
+    drawInfo();
+    drawCar();
     obstacleCar.increaseSpeed();
     Road.increaseSpeed();
     if (obstacleCar.getYCoordinate() >= Road.BOTTOM_Y_COORDINATE) {
@@ -112,9 +108,7 @@ const masterGameLoop = () => {
     if (userCar.isOnEdge() || userCar.hasCollidedWithObstacleCar(obstacleCar)) {
         canvas.classList.add('crash');
         userCar.setMovementDirection('up');
-        setTimeout(() => {
-            canvas.classList.remove('crash');
-        }, 500);
+        setTimeout(() => canvas.classList.remove('crash'), 500);
         userCar.decreaseLives();
         userCar.respawn(obstacleCar);
         if (!userCar.getLives()) {

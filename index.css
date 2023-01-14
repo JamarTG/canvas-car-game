@@ -137,6 +137,11 @@ canvas{
     animation: crash 0.5s;
     animation-iteration-count: infinite;
 }
+
+canvas {
+
+    z-index: 1;
+}
   
 @keyframes crash {
     0% { transform: translate(1px, 1px) rotate(0deg); }
