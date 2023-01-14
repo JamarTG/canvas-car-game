@@ -112,18 +112,15 @@ const gameControls = (keyboardEvent: KeyboardEvent) => {
       userCar.setMovementDirection("right").changeCarDirection(userCar.getMovementDirection());
       console.log('Another test')
       break;
-    case " ":
-      console.log('Space was pressed')
-      userCar.setFlyState()
-      break;
     default:
       break;
   }
 };
 
 const generateCar = () => {
-  let newImage = document.createElement("img");
 
+  let newImage = document.createElement("img");
+    
   if (!(
       obstacleCar.getYCoordinate() >= -100 &&
       obstacleCar.getYCoordinate() <= Road.BOTTOM_Y_COORDINATE
@@ -145,9 +142,13 @@ const generateCar = () => {
 };
 
 const drawCar = () => {
+
   const carImg = document.createElement("img");
+  
   carImg.src = "https://i.postimg.cc/1tjsKF9b/Black-viper.png";
+  
   carImg.onload = () => {
+    
     clearCanvas();
     roadAnimation();
     canvasContext.drawImage(
@@ -158,13 +159,14 @@ const drawCar = () => {
       userCar.getHeight()
     );
   };
+  console.log(carImg)
 };
 
 const masterGameLoop = () => {
-  drawCar();
-  drawInfo();
+  
   generateCar();
-  userCar.updateFlyState()
+  drawInfo();
+  drawCar();
 
   obstacleCar.increaseSpeed();
   Road.increaseSpeed();
@@ -177,9 +179,7 @@ const masterGameLoop = () => {
   if (userCar.isOnEdge() || userCar.hasCollidedWithObstacleCar(obstacleCar)) {
     canvas.classList.add('crash');
 	  userCar.setMovementDirection('up');
-    setTimeout(()=> {
-      canvas.classList.remove('crash');
-    },500)
+    setTimeout(() => canvas.classList.remove('crash'),500)
 
     userCar.decreaseLives();
     userCar.respawn(obstacleCar);
@@ -255,5 +255,4 @@ const clock = () => {
 };
 
 clock();
-
 startGame();

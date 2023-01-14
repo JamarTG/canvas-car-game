@@ -3,54 +3,10 @@ import ObstacleCar from "./ObstacleCar.js";
 const canvasElement = document.getElementById("canvas");
 export default class Viper {
     constructor() {
-        this.updateFlyState = () => {
-            if (this.isFlying) {
-                if (this.hasReachedUpperThreshold()) {
-                    this.isFalling = true;
-                    this.isFlying = false;
-                }
-                else {
-                    this.grow();
-                }
-            }
-            else if (this.isFalling) {
-                if (this.isFalling) {
-                    if (this.hasReachedLowerThreshold()) {
-                        this.isFalling = false;
-                    }
-                    else {
-                        this.shrink();
-                    }
-                }
-            }
-        };
-        this.setFlyState = () => {
-            this.isFlying = true;
-        };
         this.isOnEdge = () => {
             const hasCollidedWithLeftEdge = this.xCoordinate <= Viper.X_COORDINATE_MINUS_CAR_WIDTH;
             const hasCollidedWithRightEdge = this.xCoordinate >= canvas.width - Viper.WIDTH / 2;
             return hasCollidedWithLeftEdge || hasCollidedWithRightEdge;
-        };
-        this.getUpperHeightThreshold = () => {
-            return this.upperHeightThreshold;
-        };
-        this.getLowerHeightThreshold = () => {
-            return this.lowerHeightThreshold;
-        };
-        this.getUpperWidthThreshold = () => {
-            return this.upperWidthThreshold;
-        };
-        this.getLowerWidthThreshold = () => {
-            return this.lowerWidthThreshold;
-        };
-        this.hasReachedUpperThreshold = () => {
-            return this.getHeight() >= this.getUpperHeightThreshold()
-                && this.getWidth() >= this.getUpperWidthThreshold();
-        };
-        this.hasReachedLowerThreshold = () => {
-            return this.getHeight() <= this.getLowerHeightThreshold()
-                && this.getWidth() <= this.getLowerWidthThreshold();
         };
         this.hasCollidedWithObstacleCar = (obstacleCar) => {
             let isUserCarLeftofObstacleCar = this.getXCoordinate() < obstacleCar.getXCoordinate();
@@ -58,21 +14,10 @@ export default class Viper {
                 ? Math.abs(this.xCoordinate - obstacleCar.getXCoordinate()) <= Viper.MIN_DIFF_BETW_XCOORD_FROM_LEFT
                 : Math.abs(this.xCoordinate - obstacleCar.getXCoordinate()) <= Viper.MIN_DIFF_BETW_XCOORD_FROM_RIGHT;
             let isYCoordinatesIntersecting = Math.abs(obstacleCar.getYCoordinate() - this.yCoordinate) <= 90;
-            if (this.isFlying || this.isFalling) {
-                return false;
-            }
             return isXCoordinatesIntersecting && isYCoordinatesIntersecting;
         };
         this.increaseSideSpeed = () => {
             this.turningSpeed += 0.01;
-        };
-        this.grow = () => {
-            this.height += .5;
-            this.width += .5;
-        };
-        this.shrink = () => {
-            this.height -= .5;
-            this.width -= .5;
         };
         this.getHeight = () => {
             return this.height;
@@ -141,12 +86,6 @@ export default class Viper {
                     break;
             }
         };
-        this.upperHeightThreshold = 120;
-        this.upperWidthThreshold = 140;
-        this.lowerHeightThreshold = 100;
-        this.lowerWidthThreshold = 120;
-        this.isFlying = false;
-        this.isFalling = false;
         this.height = 100;
         this.width = 120;
         this.lives = Viper.INITAL_LIVES;
@@ -157,6 +96,12 @@ export default class Viper {
         this.movementDirection = Viper.INITIAL_MOVEMENT_DIRECTION;
     }
 }
+// private upperHeightThreshold : number;
+// private upperWidthThreshold : number;
+// private lowerWidthThreshold : number;
+// private lowerHeightThreshold : number;
+// private isFlying : boolean;
+// private isFalling : boolean;
 Viper.WIDTH = 120;
 Viper.HEIGHT = 100;
 Viper.INITIAL_X = canvas.width / 2;
