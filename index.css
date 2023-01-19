@@ -117,6 +117,7 @@ canvas{
     background-image :url('../assets/chevy.jpg');
 	background-position: -130px;
 	background-repeat : "no-repeat";
+    background-size: cover;
 }
 
 .gameend {

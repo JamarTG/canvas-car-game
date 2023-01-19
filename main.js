@@ -23,13 +23,13 @@ const gameOverAnimation = () => {
     cancelAnimationFrame(MASTERLOOP_ANIMATION_ID);
     canvasContext.fillStyle = "#D3D3D3";
     canvasContext.font = '100px "Press Start 2P", sans-serif';
-    canvasContext.fillText("Game", 60, canvas.height / 2 - 150);
-    canvasContext.fillText("Over", 60, canvas.height / 2 - 15);
-    canvasContext.font = '30px "Press Start 2P", sans-serif';
-    canvasContext.fillText(`You scored ${userCar.getScore()}`, 10, canvas.height / 2 + 40);
+    canvasContext.fillText("Game", 60, canvas.height / 2 - 210);
+    canvasContext.fillText("Over", 60, canvas.height / 2 - 85);
+    canvasContext.font = '45px "Press Start 2P", sans-serif';
+    canvasContext.fillText(`Score: ${userCar.getScore()}`, 60, canvas.height / 2 + 250);
     canvasContext.fillStyle = "#55FF33";
-    canvasContext.font = '20px "Press Start 2P", sans-serif';
-    canvasContext.fillText("Press 'enter' to restart", 10, canvas.height / 2 + 100);
+    canvasContext.font = '15px "Press Start 2P", sans-serif';
+    canvasContext.fillText("Press 'enter' to restart", 60, canvas.height / 2 + 300);
     canvas.classList.add("gameend");
     requestAnimationFrame(gameOverAnimation);
 };
@@ -65,7 +65,6 @@ const gameControls = (keyboardEvent) => {
             break;
         case "ArrowRight":
             userCar.setMovementDirection("right").changeCarDirection(userCar.getMovementDirection());
-            console.log('Another test');
             break;
         default:
             break;
@@ -92,7 +91,6 @@ const drawCar = () => {
         roadAnimation();
         canvasContext.drawImage(carImg, userCar.getXCoordinate(), userCar.getYCoordinate(), userCar.getWidth(), userCar.getHeight());
     };
-    console.log(carImg);
 };
 const masterGameLoop = () => {
     generateCar();
@@ -126,12 +124,12 @@ const gameStartAnimation = () => {
     canvasContext.clearRect(0, 0, 500, 700);
     canvasContext.fillStyle = "orange";
     canvasContext.font = '60px "Press Start 2P", sans-serif';
-    canvasContext.fillText("Evasive", canvas.width / 10, canvas.height / 6 + 30);
+    canvasContext.fillText("Evasive", canvas.width / 10, canvas.height / 6 - 20);
     canvasContext.font = '40px "Press Start 2P", sans-serif';
-    canvasContext.fillText("  Maneuvers", canvas.width / 10, canvas.height / 6 + 90);
-    canvasContext.fillStyle = "white";
+    canvasContext.fillText("  Maneuvers", canvas.width / 10, canvas.height / 6 + 30);
+    canvasContext.fillStyle = "#55FF33";
     canvasContext.font = '15px "Press Start 2P", sans-serif';
-    canvasContext.fillText("Press 'Enter' to StartGame", (canvas.width / 20) * 3, canvas.height / 2.5 - 40);
+    canvasContext.fillText("Press 'Enter' to StartGame", (canvas.width / 20) * 3, canvas.height / 3 - 50);
     canvas.classList.add("gamestart");
     GAME_START_ANIMATION_ID = requestAnimationFrame(gameStartAnimation);
 };
