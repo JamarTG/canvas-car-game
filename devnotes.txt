@@ -1,4 +1,0 @@
-Avoid Collision while jumping
-Give jumping effect as a reward for something
-Adding sound
-Generating multiple Cars instead of increasing the speed

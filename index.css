@@ -5,8 +5,6 @@ body {
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
     font-size: 11pt;
-    margin: 0;
-    padding:0;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -15,8 +13,15 @@ body {
     background-image: url('./assets/bg.jpg');
     background-repeat: no-repeat;
     background-size: cover;   
-
 }
+
+canvas {
+    width: 100%;
+    height: auto;
+    max-width: 450px;
+    max-height: 650px;
+}
+
 
 .press-title{
     font-family: "Press Start 2P";
@@ -52,15 +57,13 @@ body {
 
 
 canvas{
-    border: 2px solid black;
+    border: 2px solid transparent;
     padding: 0;
     margin-top: 10px;
     min-width: 450px;
-    max-width: 450px;  
-    border-radius: 10px;
+    min-width: 450px;  
+    border-radius: 15px;
 }
-
-
 
 .gamestart {
     width: 30vw;
@@ -100,17 +103,9 @@ canvas{
     100% { transform: translate(1px, -2px) rotate(-1deg); }
   }
 
-canvas{
-    padding: 0;
-    margin: -10px;
-    width: 400px;
-    height: 650px;
-}
-
 .regular{
     border: 5px solid transparent;
 }
-
 
 .gamestart {
     width: 30vw;
@@ -156,4 +151,27 @@ canvas {
     80% { transform: translate(-1px, -1px) rotate(1deg); }
     90% { transform: translate(1px, 2px) rotate(0deg); }
     100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+@media only screen and (max-width: 1024px) {
+    .info-section {
+        display: none;
+    }
+
+    canvas {
+        display: none;
+    }
+
+    body {
+        background-color: rgb(0, 0, 0);
+    }
+
+    body::before {
+      content: "Sorry, your device size is not currently supported. ☹️";
+      display: block;
+      font-size: 3rem;
+      text-align: center;
+      margin: 20px;
+      color: rgb(32, 32, 32);
+    }
 }

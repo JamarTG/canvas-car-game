@@ -1,5 +1,4 @@
 ﻿import canvas from "./Canvas.js";
-import ObstacleCar from "./ObstacleCar.js";
 const canvasElement = document.getElementById("canvas");
 export default class Viper {
     constructor() {

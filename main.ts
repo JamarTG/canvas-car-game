@@ -1,21 +1,18 @@
 import Viper from "./classes/Viper.js";
 import Road from "./classes/Road.js";
 import ObstacleCar from "./classes/ObstacleCar.js";
-import cartype from "./assets/CarType.js";
 import canvas from "./classes/Canvas.js";
-
+import cartype from "./assets/CarType.js";
 
 const canvasContext = canvas.getContext("2d")!;
 
 let userCar = new Viper();
 let obstacleCar = new ObstacleCar();
-
 let frontRoad = new Road(0, 0);
 let backRoad = new Road(0, canvas.height * -1);
 
 const INITIAL_CANVAS_YCOORDINATE = 0;
 const INITIAL_CANVAS_XCOORDINATE = 0;
-
 let MASTERLOOP_ANIMATION_ID: number;
 let GAME_START_ANIMATION_ID: number;
 
@@ -67,7 +64,7 @@ const drawInfo = () => {
   canvasContext.font = '10px "Press Start 2P", sans-serif';
   canvasContext.fillText(`pts : ${userCar.getScore()}`, 40, 60);
   canvasContext.fillText(
-    `spd : ${(obstacleCar.getSpeed()).toFixed(1)} km/hr`,
+    `spd : ${obstacleCar.getSpeed().toFixed(1)} km/hr`,
     40,
     80
   );
@@ -89,6 +86,7 @@ const roadAnimation = () => {
     canvas.width,
     canvas.height
   );
+
   frontRoad.updateYCoordinate();
   backRoad.updateYCoordinate();
 
@@ -101,16 +99,24 @@ const roadAnimation = () => {
 const gameControls = (keyboardEvent: KeyboardEvent) => {
   switch (keyboardEvent.key) {
     case "ArrowUp":
-      userCar.setMovementDirection("neutral").changeCarDirection(userCar.getMovementDirection());
+      userCar
+        .setMovementDirection("neutral")
+        .changeCarDirection(userCar.getMovementDirection());
       break;
     case "ArrowDown":
-      userCar.setMovementDirection("neutral").changeCarDirection(userCar.getMovementDirection());
+      userCar
+        .setMovementDirection("neutral")
+        .changeCarDirection(userCar.getMovementDirection());
       break;
     case "ArrowLeft":
-      userCar.setMovementDirection("left").changeCarDirection(userCar.getMovementDirection());
+      userCar
+        .setMovementDirection("left")
+        .changeCarDirection(userCar.getMovementDirection());
       break;
     case "ArrowRight":
-      userCar.setMovementDirection("right").changeCarDirection(userCar.getMovementDirection());
+      userCar
+        .setMovementDirection("right")
+        .changeCarDirection(userCar.getMovementDirection());
       break;
     default:
       break;
@@ -118,13 +124,14 @@ const gameControls = (keyboardEvent: KeyboardEvent) => {
 };
 
 const generateCar = () => {
-
   let newImage = document.createElement("img");
-    
-  if (!(
+
+  if (
+    !(
       obstacleCar.getYCoordinate() >= -100 &&
       obstacleCar.getYCoordinate() <= Road.BOTTOM_Y_COORDINATE
-  )) {
+    )
+  ) {
     ObstacleCar.src = `${cartype[Math.floor(Math.random() * cartype.length)]}`;
     newImage.src = ObstacleCar.src;
   } else {
@@ -142,13 +149,11 @@ const generateCar = () => {
 };
 
 const drawCar = () => {
-
   const carImg = document.createElement("img");
-  
+
   carImg.src = "https://i.postimg.cc/1tjsKF9b/Black-viper.png";
-  
+
   carImg.onload = () => {
-    
     clearCanvas();
     roadAnimation();
     canvasContext.drawImage(
@@ -162,7 +167,6 @@ const drawCar = () => {
 };
 
 const masterGameLoop = () => {
-  
   generateCar();
   drawInfo();
   drawCar();
@@ -176,9 +180,9 @@ const masterGameLoop = () => {
     userCar.increaseScore();
   }
   if (userCar.isOnEdge() || userCar.hasCollidedWithObstacleCar(obstacleCar)) {
-    canvas.classList.add('crash');
-	  userCar.setMovementDirection('up');
-    setTimeout(() => canvas.classList.remove('crash'),500)
+    canvas.classList.add("crash");
+    userCar.setMovementDirection("up");
+    setTimeout(() => canvas.classList.remove("crash"), 500);
 
     userCar.decreaseLives();
     userCar.respawn(obstacleCar);
@@ -196,31 +200,36 @@ const masterGameLoop = () => {
 };
 
 const gameStartAnimation = () => {
-  canvas.classList.add("gamestart");
-  canvasContext.clearRect(0, 0, 500, 700);
-  canvasContext.fillStyle = "orange";
-  canvasContext.font = '60px "Press Start 2P", sans-serif';
-  canvasContext.fillText("Evasive", canvas.width / 10, canvas.height / 6 - 20);
+  const backgroundImg = new Image();
+  backgroundImg.onload = () => {
+    canvas.style.backgroundImage = `url(${backgroundImg.src})`;
+    document.body.style.backgroundColor = '';
+    canvasContext.clearRect(0, 0, 500, 700);
+    canvasContext.fillStyle = "orange";
+    canvasContext.font = '60px "Press Start 2P", sans-serif';
+    canvasContext.fillText("Evasive", canvas.width / 10, canvas.height / 6 - 20);
 
-  canvasContext.font = '40px "Press Start 2P", sans-serif';
-  canvasContext.fillText(
-    "  Maneuvers",
-    canvas.width / 10,
-    canvas.height / 6 + 30
-  );
+    canvasContext.font = '40px "Press Start 2P", sans-serif';
+    canvasContext.fillText(
+      "  Maneuvers",
+      canvas.width / 10,
+      canvas.height / 6 + 30
+    );
 
-  canvasContext.fillStyle = "#55FF33";
-  canvasContext.font = '15px "Press Start 2P", sans-serif';
-  canvasContext.fillText(
-    "Press 'Enter' to StartGame",
-    (canvas.width / 20) * 3,
-    canvas.height / 3 - 50
-  );
+    canvasContext.fillStyle = "#55FF33";
+    canvasContext.font = '15px "Press Start 2P", sans-serif';
+    canvasContext.fillText(
+      "Press 'Enter' to StartGame",
+      (canvas.width / 20) * 3,
+      canvas.height / 3 - 50
+    );
 
-  canvas.classList.add("gamestart");
-  
-  GAME_START_ANIMATION_ID = requestAnimationFrame(gameStartAnimation);
+    GAME_START_ANIMATION_ID = requestAnimationFrame(gameStartAnimation);
+  };
+  backgroundImg.src = "../assets/chevy.jpg";
 };
+
+
 
 const startGame = () => {
   gameStartAnimation();
