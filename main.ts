@@ -4,10 +4,11 @@ import ObstacleCar from "./classes/ObstacleCar.js";
 import canvas from "./classes/Canvas.js";
 import cartype from "./assets/CarType.js";
 
-const canvasContext = canvas.getContext("2d")!;
+const canvasContext = canvas.getContext("2d") as CanvasRenderingContext2D;
 
-let userCar = new Viper();
+let userCar  = new Viper();
 let obstacleCar = new ObstacleCar();
+
 let frontRoad = new Road(0, 0);
 let backRoad = new Road(0, canvas.height * -1);
 
@@ -39,17 +40,17 @@ const gameOverAnimation = () => {
   canvasContext.fillText("Over", 60, canvas.height / 2 - 85);
   canvasContext.font = '45px "Press Start 2P", sans-serif';
   canvasContext.fillText(
-    `Score: ${userCar.getScore()}`,
+    ` Score: ${userCar.getScore()}`,
     60,
-    canvas.height / 2 + 250
+    canvas.height / 2 + 200
   );
 
   canvasContext.fillStyle = "#55FF33";
   canvasContext.font = '15px "Press Start 2P", sans-serif';
   canvasContext.fillText(
-    "Press 'enter' to restart",
+    " PRESS 'ENTER' TO RESTART",
     60,
-    canvas.height / 2 + 300
+    canvas.height / 2 + 50
   );
 
   canvas.classList.add("gameend");
@@ -203,11 +204,15 @@ const gameStartAnimation = () => {
   const backgroundImg = new Image();
   backgroundImg.onload = () => {
     canvas.style.backgroundImage = `url(${backgroundImg.src})`;
-    document.body.style.backgroundColor = '';
+    document.body.style.backgroundColor = "";
     canvasContext.clearRect(0, 0, 500, 700);
     canvasContext.fillStyle = "orange";
     canvasContext.font = '60px "Press Start 2P", sans-serif';
-    canvasContext.fillText("Evasive", canvas.width / 10, canvas.height / 6 - 20);
+    canvasContext.fillText(
+      "Evasive",
+      canvas.width / 10,
+      canvas.height / 6 - 20
+    );
 
     canvasContext.font = '40px "Press Start 2P", sans-serif';
     canvasContext.fillText(
@@ -219,17 +224,15 @@ const gameStartAnimation = () => {
     canvasContext.fillStyle = "#55FF33";
     canvasContext.font = '15px "Press Start 2P", sans-serif';
     canvasContext.fillText(
-      "Press 'Enter' to StartGame",
+      "PRESS 'ENTER' TO START CAR",
       (canvas.width / 20) * 3,
       canvas.height / 3 - 50
     );
 
     GAME_START_ANIMATION_ID = requestAnimationFrame(gameStartAnimation);
   };
-  backgroundImg.src = "../assets/chevy.jpg";
+  backgroundImg.src = "../assets/roadbg.jpg";
 };
-
-
 
 const startGame = () => {
   gameStartAnimation();
@@ -262,5 +265,19 @@ const clock = () => {
   }, 1);
 };
 
-clock();
-startGame();
+
+document.addEventListener('DOMContentLoaded', function() {
+  const loadingScreen = document.getElementById('loading-screen')!;
+  const content = document.querySelector('.container')!;
+
+  setTimeout(function() {
+    loadingScreen.style.display = 'none';
+    content.classList.add('loaded');
+    clock();
+    startGame();
+  }, 1000); // Delay in milliseconds (adjust as needed)
+});
+
+
+
+
