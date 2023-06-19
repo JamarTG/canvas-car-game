@@ -1,3 +1,4 @@
 # Game Preview
 
-![image](https://user-images.githubusercontent.com/71823011/212168837-228b760a-c4ad-4ebd-8b0f-7632163ef378.png)
+
+![gamescreen](https://github.com/JamarTG/evasive-maneuvers/assets/71823011/eb5b3b3f-3f4a-4008-8574-cb30db542e30)
