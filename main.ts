@@ -6,7 +6,7 @@ import cartype from "./assets/CarType.js";
 
 const canvasContext = canvas.getContext("2d") as CanvasRenderingContext2D;
 
-let userCar  = new Viper();
+let userCar = new Viper();
 let obstacleCar = new ObstacleCar();
 
 let frontRoad = new Road(0, 0);
@@ -38,10 +38,10 @@ const gameOverAnimation = () => {
   canvasContext.font = '100px "Press Start 2P", sans-serif';
   canvasContext.fillText("Game", 60, canvas.height / 2 - 210);
   canvasContext.fillText("Over", 60, canvas.height / 2 - 85);
-  canvasContext.font = '45px "Press Start 2P", sans-serif';
+  canvasContext.font = '50px "Press Start 2P", sans-serif';
   canvasContext.fillText(
-    ` Score: ${userCar.getScore()}`,
-    60,
+    `SCORE-${userCar.getScore()}`,
+    55,
     canvas.height / 2 + 200
   );
 
@@ -265,19 +265,14 @@ const clock = () => {
   }, 1);
 };
 
+document.addEventListener("DOMContentLoaded", function () {
+  const loadingScreen = document.getElementById("loading-screen")!;
+  const content = document.querySelector(".container")!;
 
-document.addEventListener('DOMContentLoaded', function() {
-  const loadingScreen = document.getElementById('loading-screen')!;
-  const content = document.querySelector('.container')!;
-
-  setTimeout(function() {
-    loadingScreen.style.display = 'none';
-    content.classList.add('loaded');
+  setTimeout(function () {
+    loadingScreen.style.display = "none";
+    content.classList.add("loaded");
     clock();
     startGame();
-  }, 1000); // Delay in milliseconds (adjust as needed)
+  }, 1000);
 });
-
-
-
-
