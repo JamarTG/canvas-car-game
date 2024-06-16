@@ -1,10 +1,22 @@
-# EVASIVE MANEUVERS 
+#  arcade-car-game
 
-### Start Screen
-![gamescreen](https://github.com/JamarTG/evasive-maneuvers/assets/71823011/eb5b3b3f-3f4a-4008-8574-cb30db542e30)
 
-### Game Screen
-![ingame](https://github.com/JamarTG/evasive-maneuvers/assets/71823011/100e1a17-e269-4e49-8397-448946c4c193)
 
-### GameOver Screen
-![gamescreen](https://github.com/JamarTG/evasive-maneuvers/assets/71823011/f2e2d12b-b074-43cd-9d96-6c4ddb5449cc)
+## Table of Contents
+
+- [About the Game](#about-the-game)
+- [Features](#features)
+- [Screenshots](#screenshots)
+- [How to Play](#how-to-play)
+
+
+## About the Game
+
+An arcade-style racing game inspired by a game I used to play as a child. I can't remember the name but credits to its creator 😂
+
+## Features
+
+- **Car Spawning** Dodge till your hands get tired
+- **Road Animation** The foundation. It's clever
+- **Life Tracking:** You get three lives. Make it count
+- **Progressive Difficulty:** It gets faster if you refuse to crash
