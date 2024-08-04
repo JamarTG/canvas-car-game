@@ -5,9 +5,16 @@
 ## Table of Contents
 
 - [About the Game](#about-the-game)
-- [Features](#features)
+- [Preview](#preview)
 - [Screenshots](#screenshots)
 - [How to Play](#how-to-play)
+
+
+## Preview
+
+<p  align="center">
+  <img src="https://github.com/user-attachments/assets/68ebcfb5-9760-4980-8798-e2dce8a125ef" alt="description of image" width="300"/>
+</p>
 
 
 ## About the Game
@@ -20,3 +27,4 @@ An arcade-style racing game inspired by a game I used to play as a child. I can'
 - **Road Animation** The foundation. It's clever
 - **Life Tracking:** You get three lives. Make it count
 - **Progressive Difficulty:** It gets faster if you refuse to crash
+
