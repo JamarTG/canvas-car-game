@@ -1,15 +1,6 @@
 #  arcade-car-game
 
 
-
-## Table of Contents
-
-- [About the Game](#about-the-game)
-- [Preview](#preview)
-- [Screenshots](#screenshots)
-- [How to Play](#how-to-play)
-
-
 ## Preview
 
 <p  align="center">
