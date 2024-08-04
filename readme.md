@@ -1,5 +1,7 @@
-#  arcade-car-game
+#  ARCADE CAR GAME
 
+## Description
+A single-player 2D vehicle dodging game created using the JavaScript Canvas API
 
 ## Preview
 
